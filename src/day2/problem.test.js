@@ -3,7 +3,7 @@ const inputReader = require('../util/inputReader')
 
 jest.mock('../util/inputReader')
 
-describe('day 1', () => {
+describe('day 2', () => {
   it('part 1 - number of valid passwords with min, max occurence of a character', () => {
     inputReader.mockResolvedValue(`1-3 a: abcde
       1-3 b: cdefg
