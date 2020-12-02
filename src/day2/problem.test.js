@@ -4,29 +4,23 @@ const inputReader = require('../util/inputReader')
 jest.mock('../util/inputReader')
 
 describe('day 1', () => {
-  xit('part 1 - find product of 2 numbers sum up to 2020', () => {
-    inputReader.mockResolvedValue(`1721
-      979
-      366
-      299
-      675
-      1456`)
+  it('part 1 - find product of 2 numbers sum up to 2020', () => {
+    inputReader.mockResolvedValue(`1-3 a: abcde
+      1-3 b: cdefg
+      2-9 c: ccccccccc`)
 
     const result = solve(1)
 
-    return expect(result).resolves.toEqual(514579)
+    return expect(result).resolves.toEqual(2)
   })
 
-  xit('part 2 - find product of 3 numbers sum up to 2020', () => {
-    inputReader.mockResolvedValue(`1721
-      979
-      366
-      299
-      675
-      1456`)
+  it('part 2 - find product of 3 numbers sum up to 2020', () => {
+    inputReader.mockResolvedValue(`1-3 a: abcde
+      1-3 b: cdefg
+      2-9 c: ccccccccc`)
 
     const result = solve(2)
 
-    return expect(result).resolves.toEqual(241861950)
+    return expect(result).resolves.toEqual(1)
   })
 })
