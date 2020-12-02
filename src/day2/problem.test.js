@@ -4,7 +4,7 @@ const inputReader = require('../util/inputReader')
 jest.mock('../util/inputReader')
 
 describe('day 1', () => {
-  it('part 1 - find product of 2 numbers sum up to 2020', () => {
+  it('part 1 - number of valid passwords with min, max occurence of a character', () => {
     inputReader.mockResolvedValue(`1-3 a: abcde
       1-3 b: cdefg
       2-9 c: ccccccccc`)
@@ -14,7 +14,7 @@ describe('day 1', () => {
     return expect(result).resolves.toEqual(2)
   })
 
-  it('part 2 - find product of 3 numbers sum up to 2020', () => {
+  it('part 2 - number of valid passwords with exclusive or occurence', () => {
     inputReader.mockResolvedValue(`1-3 a: abcde
       1-3 b: cdefg
       2-9 c: ccccccccc`)
