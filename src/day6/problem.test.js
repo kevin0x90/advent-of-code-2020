@@ -4,7 +4,7 @@ const inputReader = require('../util/inputReader')
 jest.mock('../util/inputReader')
 
 describe('day 6', () => {
-  it('part 1 - ', () => {
+  it('part 1 - count answered questions', () => {
     inputReader.mockResolvedValue(`abc
 
 a
@@ -26,7 +26,7 @@ b`)
     return expect(result).resolves.toEqual(11)
   })
 
-  it('part 2 - ', () => {
+  it('part 2 - count questions answered from all people in a group', () => {
     inputReader.mockResolvedValue(`abc
 
 a
