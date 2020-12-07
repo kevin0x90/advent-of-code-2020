@@ -71,41 +71,17 @@ function solve2(lines) {
     })
   }
 
-  let result = 1
+  const size = (bag) => {
+    let result = 1
 
-  const parents = ['shiny gold bag']
-  const emptyBags = new Set()
-  Object.entries(bagCollection).forEach(([key, value]) => {
-    if (Object.keys(value).length === 0) {
-      emptyBags.add(key)
-    }
-  })
-
-  while (parents.length > 0) {
-    const parent = parents.shift()
-
-    if (emptyBags.has(parent)) {
-      result += 1
-    }
-
-    Object.keys(bagCollection[parent]).forEach(subKey => {
-      console.log(subKey, bagCollection[subKey])
-      const subBagCount = emptyBags.has(subKey) ? 0 : Object.entries(bagCollection[subKey]).reduce((result, entry) => {
-        const [key, value] = entry
-        return result + parseInt(value, 10)
-      }, 0)
-
-      console.log(bagCollection[parent][subKey], subBagCount)
-
-      result += (parseInt(bagCollection[parent][subKey], 10) * subBagCount)
-
-      if (!parents.includes(subKey)) {
-        parents.push(subKey)
-      }
+    Object.entries(bagCollection[bag]).forEach(([key, value]) => {
+        result += value * size(key)
     })
+
+    return result
   }
 
-  return result
+  return size('shiny gold bag') - 1
 }
 
 function solve(part, input) {
