@@ -29,34 +29,34 @@ function solve2(lines) {
   const numbers = lines.map(line => parseInt(line, 10))
   numbers.sort((a, b) => a - b)
 
-  const differences = {
-    '1': new Set(),
-    '2': new Set(),
-    '3': new Set(),
+  const builtInAdapter = numbers[numbers.length - 1] + 3
+  numbers.unshift(0)
+  numbers.push(builtInAdapter)
+
+  const paths = {
+    '0': 1
   }
 
-  const builtInAdapter = numbers[numbers.length - 1] + 3
-  differences['3'].add(builtInAdapter)
-
-  let jolts = 0
-  const usedJolts = new Set()
-
   for (let i = 0; i < numbers.length; ++i) {
-    const number = numbers[i]
+    const adapter = numbers[i]
 
-    const diff = Math.abs(jolts - number)
-    if (differences[diff] !== undefined) {
-      differences[diff].add(number)
-      jolts = number
-      usedJolts.add(jolts)
+    for (let diff = 1; diff <= 3; ++diff) {
+      const nextAdapter = adapter + diff
+      if (numbers.includes(nextAdapter)) {
+        if (paths[nextAdapter] === undefined) {
+          paths[nextAdapter] = 0
+        }
+
+        if (paths[adapter] === undefined) {
+          paths[adapter] = 0
+        }
+
+        paths[nextAdapter] += paths[adapter]
+      }
     }
   }
 
-  console.log(usedJolts)
-
-  console.log(differences)
-
-  return differences['1'].size * differences['3'].size
+  return paths[builtInAdapter]
 }
 
 function solve(part, input) {
