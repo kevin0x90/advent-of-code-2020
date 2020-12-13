@@ -55,7 +55,6 @@ function solve2(lines) {
 
   while (!busDeparturesMatch(busIdMinutes, t - busIdMinutes[maxBusId])) {
     t += maxBusId
-    console.log(t)
   }
 
   return t - busIdMinutes[maxBusId]
