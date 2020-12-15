@@ -15,12 +15,14 @@ mem[8] = 0`)
     return expect(result).resolves.toEqual(165n)
   })
 
-  xit('part 2 - ', () => {
-    inputReader.mockResolvedValue(`939
-7,13,x,x,59,x,31,19`)
+  it('part 2 - decoder chip', () => {
+    inputReader.mockResolvedValue(`mask = 000000000000000000000000000000X1001X
+mem[42] = 100
+mask = 00000000000000000000000000000000X0XX
+mem[26] = 1`)
 
     const result = solve(2)
 
-    return expect(result).resolves.toEqual(1068781)
+    return expect(result).resolves.toEqual(208n)
   })
 })
