@@ -20,7 +20,7 @@ describe('day 15', () => {
     return expect(result).resolves.toEqual(expectedResult)
   })
 
-  xit.each([
+  it.each([
     ['0,3,6', 175594],
     ['1,3,2', 2578],
     ['2,1,3', 3544142],

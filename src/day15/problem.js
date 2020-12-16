@@ -39,29 +39,29 @@ function solve2(lines) {
     const line = lines[i]
     const startingNumbers = line.split(',').map(num => parseInt(num, 10))
 
-    const seen = {}
+    const seen = new Map()
 
     let turn
     for(turn = 0; turn < startingNumbers.length - 1; ++turn) {
-      if (seen[startingNumbers[turn]] === undefined) {
-        seen[startingNumbers[turn]] = turn + 1
+      if (seen.get(startingNumbers[turn]) === undefined) {
+        seen.set(startingNumbers[turn], turn + 1)
       }
     }
 
     ++turn
     let mostRecentNumber = startingNumbers[startingNumbers.length - 1]
-    const previouslySpoken = {}
+    const previouslySpoken = new Map()
 
     for (turn += 1; turn <= 30000000; ++turn) {
-      if (seen[mostRecentNumber] === undefined) {
-        seen[mostRecentNumber] = turn - 1
+      if (seen.get(mostRecentNumber) === undefined) {
+        seen.set(mostRecentNumber, turn - 1)
         mostRecentNumber = 0
       } else {
-        const turnsApartPreviouslySpoken = previouslySpoken[mostRecentNumber] - seen[mostRecentNumber]
-        seen[mostRecentNumber] = turn - 1
+        const turnsApartPreviouslySpoken = previouslySpoken.get(mostRecentNumber) - seen.get(mostRecentNumber)
+        seen.set(mostRecentNumber, turn - 1)
         mostRecentNumber = turnsApartPreviouslySpoken
       }
-      previouslySpoken[mostRecentNumber] = turn
+      previouslySpoken.set(mostRecentNumber, turn)
     }
 
     return mostRecentNumber
